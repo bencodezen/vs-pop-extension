@@ -1,7 +1,8 @@
 const { handleCommitChange } = require('./commitHandler')
 
 class RepositoryWatcher {
-  constructor(repository) {
+  constructor(repository, context) {
+    this.context = context
     this.repository = repository
     this.commits = []
   }
@@ -13,13 +14,13 @@ class RepositoryWatcher {
     )
 
     // Initial check
-    handleCommitChange(this.repository)
+    handleCommitChange(this.repository, this.context)
 
     // Watch for changes
     this.commits.push(
       this.repository.state.onDidChange(() => {
         console.log('📝 Repository state changed')
-        handleCommitChange(this.repository)
+        handleCommitChange(this.repository, this.context)
       })
     )
   }

@@ -29,7 +29,7 @@ async function activate(context) {
     context.subscriptions.push(
       git.onDidOpenRepository(() => {
         console.log('📁 New repository detected')
-        setupRepositoryWatchers(git)
+        setupRepositoryWatchers(git, context)
       })
     )
 
@@ -37,12 +37,12 @@ async function activate(context) {
     context.subscriptions.push(
       vscode.workspace.onDidChangeWorkspaceFolders(() => {
         console.log('📁 Workspace folders changed')
-        setupRepositoryWatchers(git)
+        setupRepositoryWatchers(git, context)
       })
     )
 
     // Initial setup for existing repositories
-    await setupRepositoryWatchers(git)
+    await setupRepositoryWatchers(git, context)
     console.log('✅ VS POP activated successfully!')
   } catch (error) {
     console.error('⛔ Activation error:', error)

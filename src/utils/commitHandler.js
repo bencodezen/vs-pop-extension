@@ -1,9 +1,10 @@
+const { addCommit } = require('../stores/commitStore')
 const { logCommit } = require('./logger')
 
 // Track last commit per repository
 const lastCommits = new Map()
 
-async function handleCommitChange(repository) {
+async function handleCommitChange(repository, context) {
   try {
     const logs = await repository.log({ maxEntries: 1 })
     if (!logs || logs.length === 0) {
@@ -20,6 +21,12 @@ async function handleCommitChange(repository) {
       lastCommits.set(repoPath, latestCommit.hash)
 
       logCommit({
+        commit: latestCommit.hash,
+        message: latestCommit.message,
+        repository: repoPath
+      })
+
+      addCommit(context, {
         commit: latestCommit.hash,
         message: latestCommit.message,
         repository: repoPath

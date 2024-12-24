@@ -21,7 +21,7 @@ async function getGitAPI() {
   }
 }
 
-function setupRepositoryWatchers(git) {
+function setupRepositoryWatchers(git, context) {
   if (!git) return
 
   // Clean up old watchers
@@ -31,7 +31,7 @@ function setupRepositoryWatchers(git) {
   // Setup new watchers for each repository
   git.repositories.forEach(repo => {
     console.log('👀 Setting up watcher for repository:', repo.rootUri.fsPath)
-    const watcher = new RepositoryWatcher(repo)
+    const watcher = new RepositoryWatcher(repo, context)
     watcher.startWatching()
     watchers.set(repo.rootUri.fsPath, watcher)
   })
