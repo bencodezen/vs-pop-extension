@@ -96,7 +96,7 @@ class PopViewProvider {
       <title>VS POP</title>
     </head>
     <body>
-      <p><b>What progress did you make today?</b></p>
+      <p><b>What progress have you made so far?</b></p>
       <ul class="vspop-list">
         <li>Added docs for main functionality (<code>f8ejc</code>)</li>
         <li>Add filter functionality (<code>894uq</code>)</li>
