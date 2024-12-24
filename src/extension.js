@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode')
+const { getGitAPI, setupRepositoryWatchers } = require('./utils/git')
 const { showStartupNotification } = require('./utils/notifications')
 
 // This method is called when your extension is activated
@@ -15,11 +16,38 @@ async function activate(context) {
   console.log('🚀 VS POP activating...')
 
   try {
+    // Show startup notification
     showStartupNotification()
+
+    // Initialize Git API
+    const git = await getGitAPI()
+    if (!git) {
+      throw new Error('Git API not available')
+    }
+
+    // Watch for new repositories being added
+    context.subscriptions.push(
+      git.onDidOpenRepository(() => {
+        console.log('📁 New repository detected')
+        setupRepositoryWatchers(git)
+      })
+    )
+
+    // Watch for workspace folder changes
+    context.subscriptions.push(
+      vscode.workspace.onDidChangeWorkspaceFolders(() => {
+        console.log('📁 Workspace folders changed')
+        setupRepositoryWatchers(git)
+      })
+    )
+
+    // Initial setup for existing repositories
+    await setupRepositoryWatchers(git)
+    console.log('✅ VS POP activated successfully!')
   } catch (error) {
-    console.error('🛑 Activation error:', error)
+    console.error('⛔ Activation error:', error)
     vscode.window.showErrorMessage(
-      `⛔ Failed to initialize Git Commit Logger: ${error.message}`
+      `⛔ Failed to initialize VS POP: ${error.message}`
     )
   }
 

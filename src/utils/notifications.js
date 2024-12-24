@@ -6,6 +6,15 @@ function showStartupNotification() {
   )
 }
 
+function showCommitNotification(commit, message, repository) {
+  const repoName = repository.split('/').pop() // Get the last part of the path
+  vscode.window.showInformationMessage(
+    `📢 New commit in ${repoName}: ${message}`,
+    { detail: `Commit ID: ${commit}` }
+  )
+}
+
 module.exports = {
-  showStartupNotification
+  showStartupNotification,
+  showCommitNotification
 }
