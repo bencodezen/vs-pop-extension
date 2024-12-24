@@ -1,0 +1,17 @@
+body {
+  background-color: transparent;
+}
+
+.vspop-button {
+  display: block;
+  border: none;
+  margin: 0 auto;
+}
+
+.vspop-list {
+  margin: 1rem 0;
+}
+
+.vspop-list code {
+  font-size: 1rem;
+}

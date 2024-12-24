@@ -17,10 +17,30 @@
   ],
   "main": "./src/extension.js",
   "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "type": "webview",
+          "id": "vsPop.popView",
+          "name": "VS POP"
+        }
+      ]
+    },
     "commands": [
       {
-        "command": "vs-pop.helloWorld",
+        "command": "vsPop.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "vsPop.addCommit",
+        "category": "VS POP",
+        "title": "Add Commit"
+      },
+      {
+        "command": "vsPop.clearCommits",
+        "category": "VS POP",
+        "title": "Clear Commits",
+        "icon": "$(clear-all)"
       }
     ]
   },
