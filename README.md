@@ -1,65 +1,35 @@
-# vs-pop README
+# 📈 VS POP Extension (v0.0.1-alpha)
 
-This is the README for your extension "vs-pop". After writing up a brief description, we recommend including the following sections.
+This is a VS Code extension inspired by the "progress over perfection" (POP) principle. Most productivity tools are focused merely on outcomes, but those rarely reflect the true effort that developers make in their day to day.
 
-## Features
+## 🧰 Prerequisites
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- [Visual Studio Code](https://code.visualstudio.com/)
+- Familiarity with basic [Git](https://git-scm.com/) commands
 
-For example if there is an image subfolder under your extension project workspace:
+## 📖 How to Use
 
-\!\[feature X\]\(images/feature-x.png\)
+1. Clone repository
+2. Open `extension.js`
+3. Run `Debug: Start Debugging` command
+   - Press `F5`
+   - Run command from command palette
+   - Use top navigation `Run > Start Debugging`
+4. If a dropdown opens up to select the debugger context, select the one for `VS Code Extensions`
+5. This should open up a debugger workspace in a new window
+6. You should see a VS POP panel
+7. Add a folder that is an existing git project to the debugger workspace
+8. Add commits to the project which should trigger notifications that work is being tracked
+9. Click "Get Commits" in the VS POP panel to see work that's been accomplisehd
+10. This data should persist as you close the workspace and/or add new projects
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## ✨ Features
 
-## Requirements
+The early alpha version of this extension contains the ability to:
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+1. Track git commits and persist the state across working sessions
+2. Display commits in a list view with the message and commit id displayed
 
-## Extension Settings
+## 🐞 Known Issues
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+There is currently a data duplication issue that will be resolved in a future patch.

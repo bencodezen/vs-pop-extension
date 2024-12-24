@@ -2,7 +2,7 @@
   "name": "vs-pop",
   "displayName": "vs-pop",
   "description": "Track and visualize your progress",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha",
   "engines": {
     "vscode": "^1.96.0"
   },
