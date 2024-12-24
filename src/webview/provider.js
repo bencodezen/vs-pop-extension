@@ -1,8 +1,9 @@
 const vscode = require('vscode')
 
 class PopViewProvider {
-  constructor(_extensionUri) {
-    this._extensionUri = _extensionUri
+  constructor(context) {
+    this._context = context
+    this._extensionUri = context.extensionUri
   }
   resolveWebviewView(webviewView) {
     this._view = webviewView
@@ -11,6 +12,25 @@ class PopViewProvider {
       enableScripts: true,
       localResourceRoots: [this._extensionUri]
     }
+
+    // Set up message handling
+    webviewView.webview.onDidReceiveMessage(async message => {
+      switch (message.command) {
+        case 'getState':
+          const value = this._context.globalState.get(message.key)
+          webviewView.webview.postMessage({
+            command: 'setState',
+            key: message.key,
+            value
+          })
+          break
+        case 'updateState':
+          await this._context.globalState.update(message.key, message.value)
+          break
+      }
+    })
+
+    // Set initial HTML content
     webviewView.webview.html = this._getHtmlForWebview(webviewView.webview)
   }
 
@@ -83,7 +103,7 @@ class PopViewProvider {
         <li>Refactor components (<code>i347a</code>)</li>
       </ul>
 
-      <button class="vspop-button">Get Commits</button>
+      <button class="vspop-button" id="get-commits">Get Commits</button>
 
       <script nonce="${nonce}" src="${scriptUri}"></script>
     </body>

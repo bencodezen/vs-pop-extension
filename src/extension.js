@@ -52,7 +52,7 @@ async function activate(context) {
     )
   }
 
-  const provider = new PopViewProvider(context.extensionUri)
+  const provider = new PopViewProvider(context)
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider(
       PopViewProvider.viewType,
