@@ -8,16 +8,22 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/what-is-vs-pop' }
+      { text: 'Guide', link: '/what-is-vs-pop' },
+      { text: 'Roadmap', link: '/roadmap' }
     ],
 
     sidebar: [
       {
         text: 'Introduction',
-        items: [
-          { text: 'What is VS POP?', link: '/what-is-vs-pop' },
-          { text: 'Getting Started', link: '/getting-started' }
-        ]
+        items: [{ text: 'What is VS POP?', link: '/what-is-vs-pop' }]
+      },
+      {
+        text: 'Essentials',
+        items: [{ text: 'Getting Started', link: '/getting-started' }]
+      },
+      {
+        text: 'Resources',
+        items: [{ text: 'Roadmap', link: '/roadmap' }]
       }
     ],
 
