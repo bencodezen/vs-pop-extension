@@ -8,11 +8,11 @@ hero:
   tagline: A way to help you maintain focus on progress over perfection.
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: What is VS POP?
+      link: /what-is-vs-pop
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Getting Started
+      link: /getting-started
 
 features:
   - title: 1️⃣ Automatically track your work
