@@ -13,7 +13,7 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: 'introduction',
+        text: 'Introduction',
         items: [
           { text: 'What is VS POP?', link: '/what-is-vs-pop' },
           { text: 'Getting Started', link: '/getting-started' }
