@@ -10,12 +10,14 @@
     "Other"
   ],
   "activationEvents": [],
-  "main": "./extension.js",
+  "main": "./src/extension.js",
   "contributes": {
-    "commands": [{
-      "command": "vs-pop.helloWorld",
-      "title": "Hello World"
-    }]
+    "commands": [
+      {
+        "command": "vs-pop.helloWorld",
+        "title": "Hello World"
+      }
+    ]
   },
   "scripts": {
     "lint": "eslint .",
